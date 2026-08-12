@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">KAIST Dooray Mail Assistant icon</title>
+  <desc id="desc">A white mail envelope and a coral AI sparkle on a deep blue rounded square.</desc>
+  <defs>
+    <linearGradient id="tile" x1="82" y1="54" x2="432" y2="458" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#153E75"/>
+      <stop offset="1" stop-color="#08233F"/>
+    </linearGradient>
+    <linearGradient id="spark" x1="350" y1="92" x2="444" y2="210" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF557D"/>
+      <stop offset="1" stop-color="#E40046"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Transparent outside edge keeps the icon crisp in Chrome's toolbar. -->
+  <rect x="24" y="24" width="464" height="464" rx="116" fill="url(#tile)"/>
+  <path d="M80 156C80 138.327 94.327 124 112 124H400C417.673 124 432 138.327 432 156V356C432 373.673 417.673 388 400 388H112C94.327 388 80 373.673 80 356V156Z" fill="#FFFFFF"/>
+  <path d="M103 159L237.1 269.7C248.1 278.8 263.9 278.8 274.9 269.7L409 159" fill="none" stroke="#153E75" stroke-width="31" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M101 355L207 253M411 355L305 253" fill="none" stroke="#D9E6F3" stroke-width="24" stroke-linecap="round"/>
+
+  <!-- Four-point sparkle communicates AI without borrowing another brand's mark. -->
+  <path d="M391 68C397.3 68 402.7 72.4 404 78.6L411.7 114.3C414.2 126.2 423.8 135.4 435.8 137.5L466.1 142.9C472.4 144 477 149.5 477 155.9C477 162.3 472.4 167.8 466.1 168.9L435.8 174.3C423.8 176.4 414.2 185.6 411.7 197.5L404 233.2C402.7 239.4 397.3 243.8 391 243.8C384.7 243.8 379.3 239.4 378 233.2L370.3 197.5C367.8 185.6 358.2 176.4 346.2 174.3L315.9 168.9C309.6 167.8 305 162.3 305 155.9C305 149.5 309.6 144 315.9 142.9L346.2 137.5C358.2 135.4 367.8 126.2 370.3 114.3L378 78.6C379.3 72.4 384.7 68 391 68Z" fill="url(#spark)" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  <circle cx="462" cy="235" r="18" fill="#FF557D" stroke="#FFFFFF" stroke-width="10"/>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "name": "dooray-mail-assistant",
+  "version": "3.17.0",
+  "author": "Sunwook Kim",
+  "private": true,
+  "scripts": {
+    "test": "node test_dooray_parser.js && node test_draft_validator.js && node test_privacy_guards.js",
+    "check": "node --check background.js && node --check mail-parser.js && node --check draft-validator.js && node --check content.js && node --check sidepanel.js"
+  }
+}

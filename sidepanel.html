@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KAIST Dooray Mail Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="appShell" class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <img class="brand-mark" src="icons/icon48.png" alt="">
+        <div class="brand-copy">
+          <h1 title="KAIST Dooray Mail Assistant">KAIST Dooray Mail Assistant</h1>
+          <p class="brand-description" title="Gemini 기반 Dooray용 메일 답변 도우미">Gemini 기반 Dooray용 메일 답변 도우미</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="font-controls" aria-label="글자 크기 조절">
+          <button id="fontDecreaseBtn" type="button" title="글자 작게" aria-label="글자 작게">−</button>
+          <button id="fontIncreaseBtn" type="button" title="글자 크게" aria-label="글자 크게">+</button>
+        </div>
+        <button id="settingsToggle" class="icon-button" type="button" title="설정" aria-label="설정 열기">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h3m4 0h9M4 12h9m4 0h3M4 18h2m4 0h10"/>
+            <circle cx="9" cy="6" r="2"/>
+            <circle cx="15" cy="12" r="2"/>
+            <circle cx="8" cy="18" r="2"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <section id="settingsPanel" class="settings-panel hidden" aria-label="설정">
+      <div class="panel-heading">
+        <div>
+          <h2>설정</h2>
+          <p>API 키는 브라우저에만 보관됩니다.</p>
+        </div>
+        <button id="settingsClose" class="text-button" type="button">닫기</button>
+      </div>
+
+      <label class="field">
+        <span>Gemini API 키</span>
+        <div class="secret-input">
+          <input id="apiKeyInput" type="password" autocomplete="off" placeholder="Google AI Studio에서 발급한 키">
+          <button id="apiKeyVisibility" type="button" aria-label="API 키 표시 전환">보기</button>
+        </div>
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span>모델</span>
+          <select id="modelInput">
+            <option value="gemini-3.1-flash-lite">Gemini 3.1 Flash-Lite · 저비용</option>
+            <option value="gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite · 최신 경량</option>
+          </select>
+          <small id="modelHint" class="model-hint">비용이 낮은 경량 모델부터 표시됩니다.</small>
+        </label>
+        <label class="field">
+          <span>말투</span>
+          <select id="toneInput">
+            <option value="professional">정중하고 간결하게</option>
+            <option value="warm">따뜻하고 친근하게</option>
+            <option value="formal">격식 있게</option>
+            <option value="concise">최대한 짧게</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>나에 대한 정보 <small>선택</small></span>
+        <textarea id="userProfileInput" rows="3" placeholder="예: KAIST 박사과정, 연구실 일정 조율을 주로 담당"></textarea>
+      </label>
+
+      <label class="field">
+        <span>한국어 기본 서명 <small>선택</small></span>
+        <textarea id="signatureInput" rows="3" placeholder="예: 감사합니다.\n김OO 드림"></textarea>
+      </label>
+
+      <label class="field">
+        <span>영문 기본 서명</span>
+        <textarea id="englishSignatureInput" rows="2" placeholder="Best regards\nSunwook Kim"></textarea>
+      </label>
+
+      <button id="saveSettingsBtn" class="primary-button" type="button">설정 저장</button>
+      <div class="privacy-summary">
+        <p>AI 기능을 실행할 때 현재 메일의 제목·보낸 사람·본문과 작성한 요청이 Google Gemini API로 전송됩니다.</p>
+        <p class="free-tier-warning">무료 Gemini API 등급에서는 입력·출력 데이터가 Google 제품 개선에 사용되고 사람 검토자가 읽을 수 있으므로 민감한 메일은 전송하지 마세요.</p>
+        <div class="privacy-actions">
+          <a href="privacy-policy.html" target="_blank" rel="noopener">개인정보처리방침</a>
+          <button id="resetDataBtn" type="button">API 키·설정 삭제</button>
+        </div>
+      </div>
+    </section>
+
+    <main id="mainContent" class="main-content">
+      <section id="mailCard" class="mail-card" aria-live="polite">
+        <div class="mail-status-row">
+          <span id="statusPill" class="status-pill waiting"><i></i><span id="statusLabel">메일 가져오기 대기</span></span>
+          <button id="refreshMailBtn" class="capture-button" type="button">선택한 메일 가져오기</button>
+        </div>
+        <h2 id="mailSubject">메일을 선택한 뒤 가져오기 버튼을 눌러 주세요</h2>
+        <p id="mailSender">가져온 메일은 다른 메일을 클릭해도 그대로 유지됩니다.</p>
+        <details id="mailPreview" class="mail-preview hidden">
+          <summary>
+            AI가 읽을 내용 미리보기
+            <span class="preview-warning">⚠ 본문·첨부 이미지는 인식하지 못해요</span>
+          </summary>
+          <pre id="mailPreviewText"></pre>
+        </details>
+      </section>
+
+      <section class="quick-actions" aria-label="빠른 작업">
+        <button type="button" data-prompt="현재 메일의 요청을 파악해서 바로 보낼 수 있는 적절한 답장 초안을 작성해줘." data-mode="reply">답장 초안</button>
+        <button type="button" data-prompt="메일 전체를 핵심 내용, 요청 사항, 내가 할 일, 중요한 기한으로 나누어 짧게 요약해줘." data-mode="analysis">핵심 요약</button>
+        <button type="button" data-prompt="상대방의 요청을 수락한다는 뜻이 분명하도록 정중하고 간결한 답장 초안을 작성해줘." data-mode="reply">수락 답장</button>
+        <button type="button" data-prompt="상대방에게 감사를 표하면서 요청을 정중히 거절하는 답장 초안을 작성해줘. 이유는 메일에서 확실히 알 수 있을 때만 언급해줘." data-mode="reply">정중한 거절</button>
+      </section>
+
+      <section id="conversation" class="conversation" aria-live="polite">
+        <div id="emptyState" class="empty-state">
+          <div class="sparkle" aria-hidden="true">✦</div>
+          <h2>이 메일에 관해 무엇이든 물어보세요</h2>
+          <p>답장 작성, 말투 수정, 일정 정리까지 현재 메일을 바탕으로 도와드려요.</p>
+        </div>
+        <div id="messages" class="messages"></div>
+      </section>
+    </main>
+
+    <footer id="composer" class="composer">
+      <textarea id="promptInput" rows="2" placeholder="예: 다음 주 화요일 오후로 미팅을 제안해줘"></textarea>
+      <div class="composer-actions">
+        <span>Ctrl + Enter로 전송</span>
+        <button id="generateBtn" class="send-button" type="button" aria-label="AI에게 보내기">
+          <svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 4 17 8-17 8 3-8-3-8Zm3.8 7h8.3L6.5 6.5 7.8 11Zm-1.3 6.5 9.6-4.5H7.8l-1.3 4.5Z"/></svg>
+          <svg class="stop-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
+        </button>
+      </div>
+      <p class="creator-footer">Made by Sunwook Kim · 비공식 도구</p>
+    </footer>
+  </div>
+
+  <section id="consentOverlay" class="consent-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="consentTitle">
+    <div class="consent-card">
+      <div class="consent-symbol" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.8 8.2 7 10 4.2-1.8 7-5.2 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg>
+      </div>
+      <p class="consent-eyebrow">시작하기 전에</p>
+      <h2 id="consentTitle">메일 데이터 처리 안내</h2>
+      <p class="consent-intro">사용자가 AI 답변 생성을 요청할 때만 다음 정보가 Google Gemini API로 전송됩니다.</p>
+      <ul class="consent-list">
+        <li>선택한 메일의 제목, 보낸 사람, 본문 및 선택한 문장</li>
+        <li>사용자가 입력한 질문, 프로필과 기본 서명</li>
+      </ul>
+      <div class="consent-note">
+        <strong>무료 API 이용 시 주의</strong>
+        <span>무료 등급의 입력·출력 데이터는 Google 제품 개선에 사용되고 사람 검토자가 읽을 수 있습니다. 민감한 메일은 전송하지 마세요.</span>
+      </div>
+      <p class="consent-detail">개발자 서버에는 메일이나 API 키를 전송·저장하지 않습니다. API 키와 설정은 이 브라우저에 저장됩니다.</p>
+      <label class="consent-check">
+        <input id="consentCheck" type="checkbox">
+        <span>위 내용을 확인했으며 데이터 처리에 동의합니다.</span>
+      </label>
+      <button id="acceptConsentBtn" class="primary-button" type="button" disabled>동의하고 시작</button>
+      <a class="consent-policy-link" href="privacy-policy.html" target="_blank" rel="noopener">개인정보처리방침 전문 보기</a>
+      <p class="unofficial-note">Sunwook Kim이 개발한 비공식 도구이며 KAIST, Dooray 또는 Google의 공식 제품이 아닙니다.</p>
+    </div>
+  </section>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="draft-validator.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
