@@ -1,6 +1,6 @@
 {
-  "name": "dooray-mail-assistant",
-  "version": "3.17.0",
+  "name": "dooray-mail-assistant-chrome",
+  "version": "3.17.3",
   "author": "Sunwook Kim",
   "private": true,
   "scripts": {

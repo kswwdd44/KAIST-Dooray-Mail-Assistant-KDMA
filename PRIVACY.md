@@ -1,8 +1,8 @@
-# KAIST Dooray Mail Assistant 개인정보처리방침
+# KAIST Dooray Mail Assistant for Chrome 개인정보처리방침
 
 시행일: 2026년 8월 12일
 
-KAIST Dooray Mail Assistant는 Sunwook Kim이 개발한 비공식 Chrome 확장 프로그램이며 KAIST, Dooray 또는 Google의 공식 제품이 아닙니다.
+KAIST Dooray Mail Assistant for Chrome은 Sunwook Kim이 개발한 비공식 Chrome 확장 프로그램이며 KAIST, Dooray 또는 Google의 공식 제품이 아닙니다.
 
 ## 처리하는 정보와 목적
 

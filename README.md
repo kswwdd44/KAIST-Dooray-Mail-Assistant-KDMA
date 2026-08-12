@@ -1,4 +1,4 @@
-# KAIST Dooray Mail Assistant
+# KAIST Dooray Mail Assistant for Chrome
 
 > Made by Sunwook Kim
 
@@ -7,6 +7,15 @@ Dooray 메일을 열어 둔 상태에서 Chrome 사이드 패널로 답장 초�
 Sunwook Kim이 개발한 비공식 도구이며 KAIST, Dooray 또는 Google의 공식 제품이 아닙니다.
 
 문의 및 지원: [kswwdd44@gmail.com](mailto:kswwdd44@gmail.com)
+
+## 브라우저별 배포 파일
+
+GitHub Release에는 같은 기능을 제공하는 두 설치 파일이 올라갑니다.
+
+- `KAIST-Dooray-Mail-Assistant-Chrome-v3.17.3.zip`: Google Chrome 전용
+- `KAIST-Dooray-Mail-Assistant-Edge-v3.17.3.zip`: Microsoft Edge 전용
+
+두 버전을 동시에 같은 브라우저에 설치하지 마세요. 사용하는 브라우저에 맞는 ZIP 하나만 압축 해제해 불러옵니다.
 
 ## 지금 되는 것
 
@@ -39,7 +48,7 @@ Sunwook Kim이 개발한 비공식 도구이며 KAIST, Dooray 또는 Google의 �
 3. **압축해제된 확장 프로그램을 로드합니다**를 누릅니다.
 4. 이 폴더를 선택합니다.
 
-   `C:\Users\User\.gemini\antigravity\scratch\dooray-ai-helper`
+   `C:\Users\User\.gemini\antigravity\scratch\dooray-mail-assistant-chrome`
 
 5. 확장 프로그램을 다시 로드했다면 이미 열려 있던 Dooray 탭도 한 번 새로고침합니다.
 6. 툴바의 확장 프로그램 아이콘을 누르면 Chrome 사이드 패널이 열립니다.

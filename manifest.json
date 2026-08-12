@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "KAIST Dooray Mail Assistant",
-  "version": "3.17.0",
-  "description": "Sunwook Kim이 만든 Gemini 기반 KAIST Dooray 메일 답변 도우미입니다. KAIST·Dooray·Google의 공식 제품이 아닙니다.",
+  "name": "KAIST Dooray Mail Assistant for Chrome",
+  "version": "3.17.3",
+  "description": "Google Chrome에서 사용하는 Gemini 기반 KAIST Dooray 메일 답변 도우미입니다. Sunwook Kim이 만들었으며 공식 제품이 아닙니다.",
   "permissions": [
     "sidePanel",
     "activeTab",
@@ -36,7 +36,7 @@
     }
   ],
   "action": {
-    "default_title": "KAIST Dooray Mail Assistant 열기",
+    "default_title": "KAIST Dooray Mail Assistant for Chrome 열기",
     "default_icon": {
       "16": "icons/icon16.png",
       "32": "icons/icon32.png",
