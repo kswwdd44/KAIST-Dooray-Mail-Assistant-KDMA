@@ -1,4 +1,4 @@
-# KAIST Dooray Mail Assistant for Chrome 설치 안내
+# KAIST Dooray Mail Assistant (KDMA) · Chrome 설치 안내
 
 이 확장 프로그램은 승인된 사용자에게만 비공개로 배포됩니다. 설치 파일이나 저장소 내용을 승인받지 않은 사람에게 다시 공유하지 마세요.
 

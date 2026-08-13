@@ -1,4 +1,4 @@
-# KAIST Dooray Mail Assistant for Chrome
+# KAIST Dooray Mail Assistant (KDMA) · Chrome
 
 > Made by Sunwook Kim
 
@@ -12,8 +12,8 @@ Sunwook Kim이 개발한 비공식 도구이며 KAIST, Dooray 또는 Google의 �
 
 GitHub Release에는 같은 기능을 제공하는 두 설치 파일이 올라갑니다.
 
-- `KAIST-Dooray-Mail-Assistant-Chrome-v3.17.3.zip`: Google Chrome 전용
-- `KAIST-Dooray-Mail-Assistant-Edge-v3.17.3.zip`: Microsoft Edge 전용
+- `KAIST-Dooray-Mail-Assistant-Chrome-v3.17.4.zip`: Google Chrome 전용
+- `KAIST-Dooray-Mail-Assistant-Edge-v3.17.4.zip`: Microsoft Edge 전용
 
 두 버전을 동시에 같은 브라우저에 설치하지 마세요. 사용하는 브라우저에 맞는 ZIP 하나만 압축 해제해 불러옵니다.
 

@@ -2,7 +2,7 @@
 
 ## 제품명
 
-KAIST Dooray Mail Assistant for Chrome
+KAIST Dooray Mail Assistant (KDMA)
 
 ## 짧은 설명
 
@@ -10,7 +10,7 @@ Dooray에서 선택한 메일을 바탕으로 Gemini가 답장 초안과 요약�
 
 ## 상세 설명
 
-KAIST Dooray Mail Assistant for Chrome은 Dooray 메일을 읽으면서 답장 초안, 핵심 요약, 수락 답장과 정중한 거절을 작성할 수 있는 Chrome 사이드 패널 확장 프로그램입니다.
+KAIST Dooray Mail Assistant (KDMA)는 Dooray 메일을 읽으면서 답장 초안, 핵심 요약, 수락 답장과 정중한 거절을 작성할 수 있는 Chrome 사이드 패널 확장 프로그램입니다.
 
 - 사용자가 **선택한 메일 가져오기**를 눌렀을 때만 작업할 메일을 고정합니다.
 - 사용자가 AI 작업 버튼이나 전송 버튼을 눌렀을 때만 Gemini API를 호출합니다.
